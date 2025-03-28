@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recraft Bot UI</title>
+    <link rel="stylesheet" href="styles.css">
+  <script src="tailwindcss.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body class="bg-black text-white p-6">
+  <div class="max-w-xs mx-auto space-y-6">
+
+    <!-- Aspect Ratio Slider -->
+    <div>
+      <span class="block mb-1">Aspect Ratio</span>
+      <div class="flex items-center space-x-3">
+        <div id="aspect-preview" class="aspect-preview">
+          <div id="aspect-inner" class="bg-white"></div>
+        </div>
+        <div class="slider-box flex-1">
+          <span class="slider-label" id="aspect-label">1:1</span>
+          <input id="aspect-slider" type="range" min="0" max="14" value="7" class="w-full">
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Count Slider -->
+    <div>
+      <span class="block mb-1">Number of Images</span>
+      <div class="flex items-center space-x-3">
+        <div class="image-preview" id="image-preview">
+          <div class="active"></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="slider-box flex-1">
+          <span class="slider-label" id="image-count-label">1</span>
+          <input id="image-slider" type="range" min="1" max="4" value="1" class="w-full">
+        </div>
+      </div>
+    </div>
+
+    <!-- Colors -->
+    <div>
+      <div class="flex items-center justify-between">
+        <span>Colors</span>
+        <button class="text-sm text-gray-400 hover:text-red-400" onclick="deleteColors(true)">Delete All</button>
+      </div>
+      <div id="color-container" class="flex space-x-2 mt-2">
+        <label class="circle border-2 border-dashed border-gray-400 flex items-center justify-center cursor-pointer">
+          <span class="text-gray-400 text-xl">+</span>
+          <input type="color" class="hidden" onchange="showColorConfirm(this, addColor)">
+        </label>
+      </div>
+    </div>
+
+    <!-- Background Color -->
+    <div>
+      <span>Background Color</span>
+      <div id="bgcolor-container" class="flex space-x-2 mt-2">
+        <label class="circle border-2 border-dashed border-gray-400 flex items-center justify-center cursor-pointer">
+          <span class="text-gray-400 text-xl">+</span>
+          <input type="color" class="hidden" onchange="showColorConfirm(this, setBgColor)">
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
