@@ -84,6 +84,7 @@ const aspectRatios = ['2:1', '16:9', '10:6', '3:2', '14:10', '4:3', '5:4', '1:1'
 
 function updateAspect(value) {
   aspectLabel.textContent = aspectRatios[value];
+  aspectLabel.value = value;
   const [w, h] = aspectRatios[value].split(':').map(Number);
   const maxSize = 30;
   const ratioW = w;
@@ -182,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
   tg.MainButton.setText("Confirm").show();
 
   tg.MainButton.onClick(() => {
-    const aspectRatio = aspectLabel.textContent;
+    const aspectRatio = aspectLabel.value;
     const imageCount = parseInt(imageLabel.textContent, 10);
 
     const colors = [...document.querySelectorAll('#color-container .circle')]
@@ -210,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const params = [
       'gen',
-      aspectRatio.replace(/:/g, 'x'),
+      aspectRatio,
       imageCount,
       colors?.join('-') ?? '',
       bgColor
